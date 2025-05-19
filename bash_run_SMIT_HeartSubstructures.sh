@@ -21,6 +21,13 @@ save_folder="$2"
 #Trained weight 
 load_weight_name="$3"
 
+if [ -z "$4" ]
+then
+  num_workers=4
+else
+  num_workers="$4"
+fi
+
 
 a_min=-200
 a_max=300
@@ -44,4 +51,5 @@ python run_segmentation.py \
     --save_folder $save_folder \
 	--a_min=$a_min \
 	--a_max=$a_max \
-    --use_smit $use_smit
+    --use_smit $use_smit \
+    --num_workers $num_workers
