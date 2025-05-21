@@ -23,7 +23,7 @@ load_weight_name="$3"
 
 if [ -z "$4" ]
 then
-  num_workers=4
+  num_workers=0
 else
   num_workers="$4"
 fi
