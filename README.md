@@ -1,4 +1,12 @@
-## References
-[1] Jiang, Jue, and Harini Veeraraghavan. "Self-supervised pretraining in the wild imparts image acquisition robustness to medical image transformers: an application to lung cancer segmentation." In Medical Imaging with Deep Learning. 2024.
+The model generates 10 classes, with HU of -200 to 300. The structures represent: 
 
-[2] Jiang, Jue, Neelam Tyagi, Kathryn Tringale, Christopher Crane, and Harini Veeraraghavan. "Self-supervised 3D anatomy segmentation using self-distilled masked image transformer (SMIT)." In International Conference on Medical Image Computing and Computer-Assisted Intervention, pp. 556-566. Cham: Springer Nature Switzerland, 2022.
+0: Background
+1: Aorta
+2: Pulmonary Artery
+3: Pulmonary Vein
+4: Superior Vena Cava
+5: Inferior Vena Cava
+6: Right Atrium
+7: Right Ventricle
+8: Left Atrium
+9: Left Venticle
