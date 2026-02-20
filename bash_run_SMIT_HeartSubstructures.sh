@@ -5,6 +5,7 @@
 # $1 data_dir
 # $2 save_folder
 # $3 load_weight_name
+# $4 input_nifti
 
 
 
@@ -21,22 +22,16 @@ save_folder="$2"
 #Trained weight 
 load_weight_name="$3"
 
-if [ -z "$4" ]
-then
-  num_workers=0
-else
-  num_workers="$4"
-fi
-
+input_nifti="$4"
 
 a_min=-200
 a_max=300
 space_x=1.0
 space_y=1.0
 space_z=3.0
-out_channels=6
+out_channels=10
 
-python utils/gen_data_json.py $data_dir
+python utils/gen_data_json.py $input_nifti
 
 python run_segmentation.py \
     --roi_x 128 \
@@ -51,5 +46,4 @@ python run_segmentation.py \
     --save_folder $save_folder \
 	--a_min=$a_min \
 	--a_max=$a_max \
-    --use_smit $use_smit \
-    --num_workers $num_workers
+    --use_smit $use_smit
