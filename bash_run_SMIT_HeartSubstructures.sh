@@ -7,8 +7,6 @@
 # $3 load_weight_name
 # $4 input_nifti
 
-
-
 #Use SMIT
 use_smit=1 #Use SMIT not SMIT+
 
@@ -22,7 +20,7 @@ save_folder="$2"
 #Trained weight 
 load_weight_name="$3"
 
-input_nifti="$4"
+input_nifti_dir="$4"
 
 a_min=-200
 a_max=300
@@ -31,7 +29,7 @@ space_y=1.0
 space_z=3.0
 out_channels=10
 
-python utils/gen_data_json.py $input_nifti
+python utils/gen_data_json.py $input_nifti_dir
 
 python run_segmentation.py \
     --roi_x 128 \

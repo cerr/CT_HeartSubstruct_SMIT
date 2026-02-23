@@ -2,6 +2,7 @@ import os, json, sys
 from glob import glob
 
 data_dir = sys.argv[1]
+data_dir = data_dir.strip() 
 nii_filelist = glob(os.path.join(data_dir,'*.nii*'))
 
 out_json = os.path.join(data_dir,'data.json')
@@ -15,5 +16,6 @@ for nii_file in nii_filelist:
 json_object = json.dumps(data_json, indent=4)
  
 # Writing to sample.json
+print(f"JSON input: {out_json}")
 with open(out_json, "w") as outfile:
     outfile.write(json_object)
