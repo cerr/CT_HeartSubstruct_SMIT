@@ -14,7 +14,7 @@ def get_SMIT_128_bias_True():
     config.in_chans = 1
     config.embed_dim = 128
     config.embed_dim = 48
-    config.depths = (2, 2, 8, 2)
+    config.depths = (2, 2, 12, 2)
     config.num_heads = (4, 4, 8, 16)
     
     config.window_size = (4, 4, 4)
