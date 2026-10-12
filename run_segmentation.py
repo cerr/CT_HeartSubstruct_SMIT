@@ -9,6 +9,7 @@ from monai import transforms, data
 from monai.handlers.utils import from_engine
 from monai.data import decollate_batch, load_decathlon_datalist
 from monai.transforms import (
+    Activationsd,
     AsDiscrete,
     AsDiscreted,
     EnsureChannelFirstd,
@@ -173,6 +174,10 @@ def main():
     print('val data size is ', len(val_org_loader))
     post_transforms = Compose([
         EnsureTyped(keys="pred"),
+        # Resample class probabilities (not hard labels) back to the original grid,
+        # then take argmax, so contours follow the original resolution instead of
+        # the coarse model grid.
+        Activationsd(keys="pred", softmax=True),
         Invertd(
             keys="pred",
             transform=val_org_transforms,
@@ -180,7 +185,7 @@ def main():
             meta_keys="pred_meta_dict",
             orig_meta_keys="image_meta_dict",
             meta_key_postfix="meta_dict",
-            nearest_interp=True,
+            nearest_interp=False,
             to_tensor=True,
         ),
         AsDiscreted(keys="pred", argmax=True),
